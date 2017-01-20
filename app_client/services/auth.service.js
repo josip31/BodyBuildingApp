@@ -48,9 +48,16 @@ angular
 
             login = function(user) {
                 return $http.post('/api/login', user).then(function (response) {
-                    saveToken(response.data.token);
+                    if(response.status ==401){
+                        console.log(401)
+                    }
+                    else{
+                        saveToken(response.data.token);
+                        return response
+                    }
                 }).catch(function (response) {
-                    console.error('Login error', response.status, response.data);
+                    console.error('Login error', response.status);
+                    return response
                 });
             };
 

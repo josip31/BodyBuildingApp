@@ -24,6 +24,11 @@ angular.module('mainModule').config(function($routeProvider, $locationProvider){
             controller: 'profileCtrl',
             controllerAs: 'vm'
         })
+        .when('/forgot-password', {
+            templateUrl: '/forgot-password/forgot.password.view.html',
+            controller: 'loginCtrl',
+            controllerAs: 'vm'
+        })
         .otherwise({redirectTo: '/'});
 
     // use the HTML5 History API

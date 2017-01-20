@@ -8,10 +8,19 @@ angular.module('mainModule').controller('loginCtrl', function ($location,userAut
         email: "",
         password: ""
     };
+    vm.login_error=false
     vm.onSubmit = function () {
         userAuthSrvc.login(vm.credentials)
-                .then(function(){
-                    $location.path('profile');
-                });
+                .then(function(response){
+                    console.log(response.status)
+                    if(response.status==401){
+                        vm.login_error=true;
+                    }
+                    else{
+                        $location.path('profile');
+                    }
+                }).catch(function(){
+                    console.log("catch")
+        });
         };
     });

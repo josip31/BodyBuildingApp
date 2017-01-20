@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <title>BodyBuilding</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="services/auth.service.js"></script>
+    <script src="services/profile.service.js"></script>
+
+    <script src="directives/navigation/navigation.controller.js"></script>
+    <script src="directives/navigation/navigation.directive.js"></script>
+    <script src="home/home.controller.js"></script>
+    <script src="profile/profile.controller.js"></script>
+    <script src="login/login.controller.js"></script>
+    <script src="register/register.controller.js"></script>
+
+    <script src="app.routes.js"></script>
+
+</head>
+<body ng-app="mainModule">
+    <div ng-view></div>
+</body>
+</html>

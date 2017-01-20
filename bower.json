@@ -1,0 +1,17 @@
+{
+  "name": "body-building-bower",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "animate.css": "latest",
+    "angular": "1.6.x",
+    "angular-animate": "1.6.x",
+    "angular-mocks": "1.6.x",
+    "angular-resource": "1.6.x",
+    "angular-route": "1.6.x",
+    "jquery": "2.2.x",
+    "lodash" :"latest",
+    "bcrypt" : "latest"
+  }
+}

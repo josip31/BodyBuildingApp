@@ -1,0 +1,26 @@
+<navigation></navigation>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Register</h1>
+            <p class="lead">Za logiranje <a href="login">klikni ovdje</a></p>
+            <form ng-submit="vm.onSubmit()">
+                <div class="form-group">
+                    <label for="name">Ime </label>
+                    <input type="text" class="form-control" id="name" placeholder="Ime" ng-model="vm.credentials.name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email adresa</label>
+                    <input type="email" class="form-control" id="email" placeholder="email" ng-model="vm.credentials.email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password">
+                </div>
+                <button type="submit" class="btn btn-default">Registracija</button>
+            </form>
+        </div>
+    </div>
+
+</div>

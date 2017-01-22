@@ -11,7 +11,7 @@
     "angular-resource": "1.6.x",
     "angular-route": "1.6.x",
     "jquery": "2.2.x",
-    "lodash" :"latest",
-    "bcrypt" : "latest"
+    "lodash": "latest",
+    "bcrypt": "latest"
   }
 }

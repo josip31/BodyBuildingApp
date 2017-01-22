@@ -26,7 +26,7 @@ angular.module('mainModule').config(function($routeProvider, $locationProvider){
         })
         .when('/forgot-password', {
             templateUrl: '/forgot-password/forgot.password.view.html',
-            controller: 'loginCtrl',
+            controller: 'forgotPassCtrl',
             controllerAs: 'vm'
         })
         .otherwise({redirectTo: '/'});

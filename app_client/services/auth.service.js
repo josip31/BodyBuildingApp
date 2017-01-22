@@ -1,6 +1,4 @@
-angular
-    .module('mainModule')
-    .service('userAuthSrvc', function($http,$window){
+angular.module('mainModule').service('userAuthSrvc', function($http,$window){
             var saveToken = function (token) {
                 $window.localStorage['mean-token'] = token;
             };

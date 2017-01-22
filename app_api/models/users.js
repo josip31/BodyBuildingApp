@@ -12,13 +12,33 @@ var userSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
+    hash:{ type:String},
+    salt: {type:String},
     name: {
         type: String,
         required: true,
-        unique: true
+        unique: false //bio true , ovo je ime a ne username
     },
-    hash:{ type:String},
-    salt: {type:String}
+    dateofbirth:{
+        type: Date
+    },
+    placeofbirth:{
+        type:String
+    },
+    sex: {
+        type: String
+    },
+    education:{
+        type:String
+    },
+    profession:{
+        type:String
+    },
+    profile_img:{
+        data:Buffer,
+        contentType:String
+    }
+
 });
 
 userSchema.methods.setPassword = function(password){

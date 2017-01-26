@@ -13,12 +13,17 @@ module.exports.insert=function(req, res){
     meas.measured_value = req.body.measured_value;
     meas.measured_date = req.body.measured_date;
     meas.unit = req.body.unit;
-
+    console.log("ADD NEW MEAS FOR USER:"+meas.email)
     meas.save(function(err) {
-        if(err)
+        if(err) {
             console.log("Error:"+err)
-        else
+            res.status(500)
+            res.send(err)
+        }
+        else{
             res.status(200);
+            res.send("OK");
+        }
     })
 }
 

@@ -13,11 +13,11 @@ var measurementSchema = new mongoose.Schema({
         required: true
     },
     measured_value:{
-        type:String,
+        type:Number,
         required: true
     },
     unit:{
-        type:Date,
+        type:String,
         required:true
     },
     measured_date:{

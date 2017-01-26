@@ -1,6 +1,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+            <div class="alert alert-success" role="alert" ng-hide="vm.err && vm.msg!=null">
+                <strong>Dodano!</strong> {{vm.msg}}.
+            </div>
+            <div class="alert alert-danger" role="alert" ng-show="vm.err">
+                <strong>Pogreska</strong> {{vm.msg}}.
+            </div>
             <form class="form-group" role="form">
                 <label class="col-md-3 control-label">Datum mjerenja:</label>
                 <div class="col-md-8">

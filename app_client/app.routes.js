@@ -29,6 +29,11 @@ angular.module('mainModule').config(function($routeProvider, $locationProvider){
             controller: 'forgotPassCtrl',
             controllerAs: 'vm'
         })
+        .when('/measurement',{
+            templateUrl:'/measurement/measurement.view.html',
+            controller: 'measurementCtrl',
+            controllerAs: 'vm'
+        })
         .otherwise({redirectTo: '/'});
 
     // use the HTML5 History API

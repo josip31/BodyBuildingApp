@@ -17,6 +17,8 @@ var auth = jwt({
 var profile = require('../controllers/profile');
 var user_auth = require('../controllers/authentication');
 var email_sender=require('../controllers/email.controller');
+var measur=require('../controllers/measurement.controller');
+
 
 router.get('/profile', auth, profile.userProfile);
 router.post('/profile',profile.editProfile); //trenutno je maknuta auth, lakse testiranje, kasnije je potreno dodati
@@ -27,13 +29,10 @@ router.post('/login', user_auth.login);
 
 router.post("/sendMail/",email_sender.sendMail)
 
-
 router.post("/saveProfilePicture",multipartyMiddleware,profile.saveProfilePicture)
-/*
 
-* radi testiranja kreirana je ta ruta, kasnije maknuti i sve ide u profile
-* Ruta ne radi, potrebno dodati novi middleware
-* */
+router.get("/getAllMeasurement",measur.all)
+router.post("/newMeasurament",measur.insert)
 
 
 

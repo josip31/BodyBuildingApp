@@ -40,3 +40,4 @@ process.on('SIGINT', function() {
 
 // Ovdje se dodaju sve potrebne sheme
 require('./users');
+require('./measurement');

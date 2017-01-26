@@ -1,4 +1,4 @@
-angular.module('mainModule').service('profileData', function ($http,userAuthSrvc){
+angular.module('mainModule').service('profileData', function ($http,Upload, $timeout,userAuthSrvc){
     var getProfile = function () {
          return $http.get("/api/profile", {
               headers: {
@@ -17,39 +17,20 @@ angular.module('mainModule').service('profileData', function ($http,userAuthSrvc
             })
         }
 
-
-    var uploadImage = function(img) {
-
-        var fd = new FormData();
-        var imgBlob = dataURItoBlob(img);
-        fd.append('file', imgBlob);
-        $http.post(
-            '/api/saveProfilePicture',
-            fd, {
-                transformRequest: angular.identity,
-                headers: {
-                    'Content-Type': undefined
-                }
-            }
-            )
-            .then(function(response) {
-                console.log('success', response);
-            })
-            .catch(function(response) {
-                console.log('error', response);
-            });
-    }
-
-
-    var  dataURItoBlob =  function(dataURI) {
-        var binary = atob(dataURI.split(',')[1]);
-        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-        var array = [];
-        for (var i = 0; i < binary.length; i++) {
-            array.push(binary.charCodeAt(i));
-        }
-        return new Blob([new Uint8Array(array)], {
-            type: mimeString
+    var uploadImage=function(img,user_id){
+        Upload.upload({
+            url: '/api/saveProfilePicture',
+            headers:{email:user_id},
+            method:'POST',
+            data: {file: img, 'email': user_id},
+            file:img,
+        }).then(function (resp) {
+            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+        }, function (resp) {
+            console.log('Error status: ' + resp.status);
+        }, function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
         });
     }
 

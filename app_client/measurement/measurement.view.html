@@ -65,13 +65,40 @@
 
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default panel-table">
+
+
+                <form class="form-group" role="form" name="searchMeas">
+                    <label class="col-md-3 control-label">Pretraži po datumu:</label>
+                    <div class="col-md-8">
+                        <input class="form-control"  ng-model="vm.search.created" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Pretraži po dijelu tijela:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text"  ng-model="vm.search.bodypart" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Pretraži po vrijednosti:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text"  ng-model="vm.search.value" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Pretraži po mjernoj jednici:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text"  ng-model="vm.search.unit" required>
+                        </div>
+                    </div>
+
+
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col col-xs-6">
+                        <div class="col col-xs-2">
                             <h3 class="panel-title">Mjerenja</h3>
-                        </div>
-                        <div class="col col-xs-6 text-right">
-
                         </div>
                     </div>
                 </div>
@@ -88,7 +115,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="m in vm.all_meas">
+                        <tr ng-repeat="m in vm.all_meas |filter:vm.search.created| filter:vm.search.bodypart||vm.search.value|filter:vm.search.unit">
                             <td align="center">
                                 <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
                                 <a class="btn btn-danger"><em class="fa fa-trash" ng-click="vm.deleteMeasurement($index)" ></em></a>

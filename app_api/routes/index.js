@@ -31,9 +31,9 @@ router.post("/sendMail/",email_sender.sendMail)
 
 router.post("/saveProfilePicture",multipartyMiddleware,profile.saveProfilePicture)
 
-router.get("/getAllMeasurement",measur.all)
+router.get("/getMeasurements",measur.measurements)
 router.post("/newMeasurament",measur.insert)
-
+router.post("/deleteMeasurament",measur.clearmeasurement)
 
 
 module.exports = router;

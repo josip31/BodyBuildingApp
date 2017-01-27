@@ -6,7 +6,7 @@ var Measurement = mongoose.model('Measurement');
 
 
 module.exports.insert=function(req, res){
-
+    console.log("NEW MEAS")
     var meas = new Measurement();
     meas.email = req.body.email;
     meas.bodypart = req.body.bodypart;
@@ -27,4 +27,35 @@ module.exports.insert=function(req, res){
     })
 }
 
-module.exports.all=function(req, res){}
+module.exports.measurements=function(req, res){
+    var query={email:req.headers.email}
+    console.log("Find measurement for user:"+req.headers.email+"\n\n")
+    Measurement.find(query)
+        .sort({measured_date:1}).exec(function(err,mes){
+            if(err !=null){
+                console.log(err)
+                res.status(400)
+                res.send(err)
+            }
+            else{
+                res.status(200)
+                res.send(mes)
+            }
+    })
+}
+
+module.exports.clearmeasurement=function(req,res){
+    var query={_id:req.body.meas_id}
+    console.log("Delete measurement for user:"+query._id)
+    Measurement.findByIdAndRemove(query._id,function(err,mes){
+        if(err){
+            res.status(500)
+            res.send(err)
+        }
+        else{
+            res.status(200)
+            res.send()
+        }
+    })
+
+}

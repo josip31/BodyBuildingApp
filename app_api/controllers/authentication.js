@@ -27,6 +27,8 @@ module.exports.register = function(req, res) {
     user.save(function(err) {
         if(err){
             console.log("Error:"+err)
+            res.status(502)
+            res.send(err)
         }
         else{
             var token;

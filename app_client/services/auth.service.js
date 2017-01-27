@@ -38,8 +38,10 @@ angular.module('mainModule').service('userAuthSrvc', function($http,$window){
             register = function(user) {
                 return $http.post('/api/register', user).then(function(response){
                     saveToken(response.data.token);
+                    return response
                 }).catch(function(response){
                     console.error('Register error', response.status, response.data);
+                    return response;
                 }
             );
             };

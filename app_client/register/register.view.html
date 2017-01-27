@@ -6,23 +6,26 @@
     <div class="login-form-1">
         <form id="register-form" class="text-left" ng-submit="vm.onSubmit()">
             <div class="login-form-main-message"></div>
+            <div class="alert alert-danger" role="alert" ng-show="vm.err">
+                <strong>Pogreska</strong> {{vm.msg}}.
+            </div>
             <div class="main-login-form">
                 <div class="login-group">
                     <div class="form-group">
                         <label for="reg_fullname" class="sr-only">Ime i prezime</label>
-                        <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="ime i prezime" ng-model="vm.credentials.name">
+                        <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="ime i prezime" ng-model="vm.credentials.name" required>
                     </div>
                     <div class="form-group">
                         <label for="reg_email" class="sr-only">Email</label>
-                        <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email" ng-model="vm.credentials.email">
+                        <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email" ng-model="vm.credentials.email" type="email" required>
                     </div>
                     <div class="form-group">
                         <label for="reg_password" class="sr-only">Lozinka</label>
-                        <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="lozinka" ng-model="vm.credentials.password">
+                        <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="lozinka" ng-model="vm.credentials.password" required>
                     </div>
                     <div class="form-group">
                         <label for="reg_password_confirm" class="sr-only">Potvrdi lozinku</label>
-                        <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="potvrda lozinke">
+                        <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="potvrda lozinke" ng-model="vm.password_check">
                     </div>
 
                 </div>

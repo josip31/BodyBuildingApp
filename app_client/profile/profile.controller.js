@@ -8,15 +8,14 @@ angular.module('mainModule').controller('profileCtrl',function($location,profile
     vm.error=false;
 
     vm.picFile
-
-    vm.fileReaderSupported = window.FileReader !== null;
     
     profileData.getProfile()
         .then(function(response) {
             console.log("GET PROFILE: "+response.data)
             vm.user = response.data;
             vm.user.dateofbirth=new Date(vm.user.dateofbirth)
-            vm.test=commonSrvc.base64ArrayBuffer(vm.user.profile_img.data.data)
+            if(vm.user.profile_img)
+                vm.test=commonSrvc.base64ArrayBuffer(vm.user.profile_img.data.data)
            
         })
 

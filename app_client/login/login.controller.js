@@ -10,6 +10,7 @@ angular.module('mainModule').controller('loginCtrl', function ($location,userAut
     };
     vm.login_error=false
     vm.onSubmit = function () {
+        
         userAuthSrvc.login(vm.credentials)
                 .then(function(response){
                     console.log(response.status)

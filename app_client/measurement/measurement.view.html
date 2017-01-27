@@ -8,16 +8,17 @@
             <div class="alert alert-danger" role="alert" ng-show="vm.err">
                 <strong>Pogreska</strong> {{vm.msg}}.
             </div>
-            <form class="form-group" role="form">
+            <div class="panel panel-body">
+            <form class="form-group" role="form" name="addNewMeas">
                 <label class="col-md-3 control-label">Datum mjerenja:</label>
                 <div class="col-md-8">
-                    <input class="form-control"  type="date" placeholder="yyyy-MM-dd"  ng-model="vm.new_meas.measured_date">
+                    <input class="form-control"  type="date" placeholder="yyyy-MM-dd"  ng-model="vm.new_meas.measured_date" required>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Dio tjela:</label>
                     <div class="col-lg-8">
                         <div class="ui-select">
-                            <select id="bodypart_select" class="form-control" ng-model="vm.new_meas.bodypart">
+                            <select id="bodypart_select" class="form-control" ng-model="vm.new_meas.bodypart" required>
                                 <option value="Lijeva podlaktica">Visina</option>
                                 <option value="Desna podlaktica">Tezina</option>
                                 <option value="Lijeva podlaktica">Lijeva podlaktica</option>
@@ -38,7 +39,7 @@
                 <div class="form-group">
                     <label class="col-md-3 control-label">Vrijednost:</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="text"  ng-model="vm.new_meas.measured_value">
+                        <input class="form-control" type="text"  ng-model="vm.new_meas.measured_value" required>
                     </div>
                 </div>
 
@@ -46,16 +47,20 @@
                     <label class="col-lg-3 control-label">Mjerna jedinica:</label>
                     <div class="col-lg-8">
                         <div class="ui-select">
-                            <select id="unit_select" class="form-control" ng-model="vm.new_meas.unit">
+                            <select id="unit_select" class="form-control" ng-model="vm.new_meas.unit" required>
                                 <option value="cm">cm</option>
                                 <option value="kg">kg</option>
                             </select>
                         </div>
                     </div>
                 </div>
-
-            <button type="button" class="btn btn-sm btn-primary btn-create" ng-click="vm.addNew()">Dodaj</button>
+                <div class=class="form-group">
+                    <div lass="col-lg-8">
+                    <button type="button" class="btn btn-sm btn-primary btn-create center-block" ng-click="vm.addNew()" ng-disabled="addNewMeas.$invalid">Dodaj</button>
+                    </div>
+                </div>
             </form>
+            </div>
         </div>
 
         <div class="col-md-10 col-md-offset-1">
@@ -86,13 +91,13 @@
                         <tr ng-repeat="m in vm.all_meas">
                             <td align="center">
                                 <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                <a class="btn btn-danger"><em class="fa fa-trash" ng-click="vm.deleteMeasurement($index)"></em></a>
+                                <a class="btn btn-danger"><em class="fa fa-trash" ng-click="vm.deleteMeasurement($index)" ></em></a>
                             </td>
                             <td class="hidden-xs">{{$index + 1}}</td>
-                            <td ng-model="m.measured_date">{{m.measured_date}}</td>
+                            <td ng-model="m.measured_date">{{m.measured_date | date: 'dd-MM-yyyy'}}</td>
                             <td ng-model="m.bodypart">{{m.bodypart}}</td>
                             <td ng-model="m.measured_value">{{m.measured_value}}</td>
-                            <td ng-model="m.measured_date">{{m.unit}}</td>
+                            <td ng-model="m.unit">{{m.unit}}</td>
                         </tr>
                         </tbody>
                     </table>

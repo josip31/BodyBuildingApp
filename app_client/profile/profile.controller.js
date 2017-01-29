@@ -2,7 +2,7 @@
  * Created by josip on 20.1.2017..
  */
 
-angular.module('mainModule').controller('profileCtrl',function($location,profileData,commonSrvc){
+angular.module('mainModule').controller('profileCtrl',function($location,$route,profileData,commonSrvc){
     var vm = this;
     vm.user = {};
     vm.error=false;
@@ -20,10 +20,10 @@ angular.module('mainModule').controller('profileCtrl',function($location,profile
         })
 
     vm.editProfile= function(){
-
+        vm.user.profile_img=null
         profileData.editProfile(vm.user).then(function (response){
             if(response.status == 200){
-                $location.path("/profile")
+                $route.reload();
             }
             else{
                 vm.error=true;
@@ -33,7 +33,10 @@ angular.module('mainModule').controller('profileCtrl',function($location,profile
 
 
     vm.uploadImage = function(){
+        if(vm.picFile){
         profileData.uploadImage(vm.picFile,vm.user.email)
+        $route.reload();
+        }
     }
 
     

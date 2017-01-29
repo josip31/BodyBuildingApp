@@ -70,7 +70,7 @@
                 <form class="form-group" role="form" name="searchMeas">
                     <label class="col-md-3 control-label">Pretraži po datumu:</label>
                     <div class="col-md-8">
-                        <input class="form-control"  ng-model="vm.search.created" required>
+                        <input type="date" class="form-control"  ng-model="vm.search.created" required>
                     </div>
 
                     <div class="form-group">
@@ -83,7 +83,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">Pretraži po vrijednosti:</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text"  ng-model="vm.search.value" required>
+                            <input class="form-control" type="text"  ng-model="vm.search.meas_value" required>
                         </div>
                     </div>
 
@@ -115,7 +115,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="m in vm.all_meas |filter:vm.search.created| filter:vm.search.bodypart||vm.search.value|filter:vm.search.unit">
+                        <tr ng-repeat="m in vm.all_meas |filter: vm.search.created | filter: vm.search.bodypart | filter: vm.search.meas_value:strict">
                             <td align="center">
                                 <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
                                 <a class="btn btn-danger"><em class="fa fa-trash" ng-click="vm.deleteMeasurement($index)" ></em></a>

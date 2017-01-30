@@ -9,3 +9,4 @@ Pokretanje:
 4. Pokrenut skriptu server.js pomoću node : node server.js
 5. Webserver se pokreće na portu 8080.
 
+Ukoliko mongdoDB se ne želi pokrenuti: 1.) Kontrolirati da li postoji direktoriji C:\data\db. to je default mjesto spremanja podataka
